@@ -1,0 +1,46 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: shared-ingress
+  namespace: argocd # Để cùng namespace với ArgoCD cho tiện quản lý ban đầu
+  annotations:
+    # GỌI TÊN IP TĨNH TỪ TERRAFORM
+    kubernetes.io/ingress.global-static-ip-name: "lab-gke-485602-dev-cluster-global-ip" 
+    
+    # GỌI CERTIFICATE CHUNG
+    networking.gke.io/managed-certificates: "common-managed-cert"
+    
+    # SỬ DỤNG GKE INGRESS
+    kubernetes.io/ingress.class: "gce"
+
+    # Tùy chọn: Tự động chuyển hướng HTTP sang HTTPS
+    kubernetes.io/ingress.allow-http: "false" 
+spec:
+  rules:
+    # 1. Cấu hình cho ArgoCD
+    - host: argocd-nghieptb-gke-lab.webapp01.hblab.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
+
+    # 2. Cấu hình cho App 1 (Ví dụ sau này bạn làm)
+    - host: app1.yourdomain.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: app1-service
+                port:
+                  number: 80
+
+    # 3. Cấu hình cho App 2
+    # - host: app2.yourdomain.com
+    #   ...

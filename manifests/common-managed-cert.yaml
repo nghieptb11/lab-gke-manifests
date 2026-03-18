@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: common-managed-cert
+  namespace: argocd
+spec:
+  domains:
+    - argocd-nghieptb-gke-lab.webapp01.hblab.dev
