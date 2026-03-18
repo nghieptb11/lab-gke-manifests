@@ -28,19 +28,3 @@ spec:
                 name: argocd-server
                 port:
                   number: 80
-
-    # 2. Cấu hình cho App 1 (Ví dụ sau này bạn làm)
-    - host: app1.yourdomain.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: app1-service
-                port:
-                  number: 80
-
-    # 3. Cấu hình cho App 2
-    # - host: app2.yourdomain.com
-    #   ...
