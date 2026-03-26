@@ -1,7 +1,7 @@
 replicaCount: 1
 
 appName: frontend-app
-namespace: dev
+namespace: argocd # Để cùng namespace với ArgoCD cho tiện quản lý ban đầu
 
 image:
   repository: devopsjourney1/mywebapp
@@ -11,7 +11,7 @@ image:
 ingress:
   enabled: false # Tắt đi nếu bạn chưa dùng ingress riêng cho app này
   hosts:
-    - host: chart-example.local
+    - host: frontend-app-nghieptb-gke-lab.webapp01.hblab.dev
       paths:
         - path: /
           pathType: ImplementationSpecific
