@@ -37,6 +37,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: frontend-app
+                name: lab-gke-frontend
                 port:
                   number: 80
