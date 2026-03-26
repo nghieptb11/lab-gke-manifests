@@ -1,0 +1,23 @@
+replicaCount: 1
+
+appName: frontend-app
+namespace: dev
+
+image:
+  repository: devopsjourney1/mywebapp
+  tag: latest
+  pullPolicy: IfNotPresent
+
+
+
+
+
+service:
+  type: ClusterIP
+  port: 8080
+
+configmap:
+  name: myhelmapp-configmap-v1
+
+  data:
+    CUSTOM_HEADER: "Welcome to GKE Lab"
