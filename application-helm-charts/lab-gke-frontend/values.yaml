@@ -26,4 +26,4 @@ configmap:
   name: myhelmapp-configmap-v1
 
   data:
-    CUSTOM_HEADER: "Welcome to GKE Lab"
+    CUSTOM_HEADER: "Welcome to GKE Lab of NghiepTB"
