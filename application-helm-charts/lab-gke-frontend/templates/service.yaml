@@ -1,15 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "lab-gke-frontend.fullname" . }}
-  labels:
-    {{- include "lab-gke-frontend.labels" . | nindent 4 }}
+  name: lab-gke-frontend
+  namespace: argocd
 spec:
   type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
   selector:
-    {{- include "lab-gke-frontend.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/name: lab-gke-frontend
+    app.kubernetes.io/instance: lab-gke-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: http # Phải khớp với name: http trong Deployment

@@ -1,34 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.appName }}
-  namespace: {{ .Values.namespace }}
-  labels:
-    app: {{ .Values.appName }}
+  name: lab-gke-frontend
+  namespace: argocd
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.appName }}
-      tier: frontend
+      app.kubernetes.io/name: lab-gke-frontend
+      app.kubernetes.io/instance: lab-gke-frontend
   template:
     metadata:
       labels:
-        app: {{ .Values.appName }}
-        tier: frontend
-    spec: # Pod spec
+        app.kubernetes.io/name: lab-gke-frontend
+        app.kubernetes.io/instance: lab-gke-frontend
+    spec:
       containers:
       - name: mycontainer
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         ports:
-        - containerPort: 80
-        envFrom:
-        - configMapRef:
-            name: {{ .Values.configmap.name }}
-        resources:
-          requests:
-            memory: "16Mi" 
-            cpu: "50m"    # 50 milli cores (1/20 CPU)
-          limits:
-            memory: "128Mi" # 128 mebibytes 
-            cpu: "100m"
+        - name: http
+          containerPort: 80
