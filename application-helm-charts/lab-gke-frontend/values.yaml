@@ -1,6 +1,6 @@
 replicaCount: 1
 
-appName: frontend-app
+appName: lab-gke-frontend
 namespace: argocd # Để cùng namespace với ArgoCD cho tiện quản lý ban đầu
 
 image:
