@@ -40,4 +40,4 @@ spec:
               service:
                 name: lab-gke-frontend
                 port:
-                  number: 8080
+                  number: 80
