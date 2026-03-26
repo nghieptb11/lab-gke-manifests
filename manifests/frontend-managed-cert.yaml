@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: frontend-managed-cert
+  namespace: dev
+spec:
+  domains:
+    - frontend-app-nghieptb-gke-lab.webapp01.hblab.dev

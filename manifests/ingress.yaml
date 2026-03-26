@@ -8,7 +8,7 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: "lab-gke-485602-dev-cluster-global-ip" 
     
     # GỌI CERTIFICATE CHUNG
-    networking.gke.io/managed-certificates: "common-managed-cert"
+    networking.gke.io/managed-certificates: "common-managed-cert,frontend-managed-cert"
     
     # SỬ DỤNG GKE INGRESS
     kubernetes.io/ingress.class: "gce"

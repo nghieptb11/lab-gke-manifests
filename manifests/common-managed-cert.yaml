@@ -6,4 +6,3 @@ metadata:
 spec:
   domains:
     - argocd-nghieptb-gke-lab.webapp01.hblab.dev
-    - frontend-app-nghieptb-gke-lab.webapp01.hblab.dev
