@@ -6,7 +6,6 @@ namespace: argocd # Để cùng namespace với ArgoCD cho tiện quản lý ban
 image:
   repository: devopsjourney1/mywebapp
   tag: latest
-  pullPolicy: IfNotPresent
 
 ingress:
   enabled: false # Tắt đi nếu bạn chưa dùng ingress riêng cho app này

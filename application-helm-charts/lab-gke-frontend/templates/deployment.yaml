@@ -6,22 +6,22 @@ metadata:
   labels:
     app: {{ .Values.appName }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 5
   selector:
     matchLabels:
-      {{- include "lab-gke-frontend.selectorLabels" . | nindent 6 }}
+      app: {{ .Values.appName }}
       tier: frontend
   template:
     metadata:
       labels:
-        {{- include "lab-gke-frontend.selectorLabels" . | nindent 8 }}
+        app: {{ .Values.appName }}
+        tier: frontend
     spec: # Pod spec
       containers:
       - name: mycontainer
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-        - name: http
-          containerPort: 80
+        - containerPort: 80
         envFrom:
         - configMapRef:
             name: {{ .Values.configmap.name }}
