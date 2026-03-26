@@ -28,3 +28,15 @@ spec:
                 name: argocd-server
                 port:
                   number: 80
+
+    # 2. Cấu hình cho frontend app (nếu bật ingress riêng cho app này)
+    - host: frontend-app-nghieptb-gke-lab.webapp01.hblab.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-app
+                port:
+                  number: 80
