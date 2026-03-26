@@ -9,13 +9,12 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.appName }}
+      {{- include "lab-gke-frontend.selectorLabels" . | nindent 6 }}
       tier: frontend
   template:
     metadata:
       labels:
-        app: {{ .Values.appName }}
-        tier: frontend
+        {{- include "lab-gke-frontend.selectorLabels" . | nindent 8 }}
     spec: # Pod spec
       containers:
       - name: mycontainer
