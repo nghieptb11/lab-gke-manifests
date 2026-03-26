@@ -14,8 +14,9 @@ metadata:
     kubernetes.io/ingress.class: "gce"
 
     # Tùy chọn: Tự động chuyển hướng HTTP sang HTTPS
-    kubernetes.io/ingress.allow-http: "false" 
+    kubernetes.io/ingress.allow-http: "true" 
 spec:
+  ingressClassName: gce
   rules:
     # 1. Cấu hình cho ArgoCD
     - host: argocd-nghieptb-gke-lab.webapp01.hblab.dev
