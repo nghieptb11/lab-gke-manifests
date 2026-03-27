@@ -7,17 +7,15 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: lab-gke-frontend
-      app.kubernetes.io/instance: lab-gke-frontend
+      app: lab-gke-frontend
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: lab-gke-frontend
-        app.kubernetes.io/instance: lab-gke-frontend
+        app: lab-gke-frontend
     spec:
       containers:
       - name: mycontainer
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         ports:
-        - name: http
-          containerPort: 80
+        - containerPort: 80
+          name: http

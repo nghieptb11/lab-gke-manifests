@@ -4,8 +4,8 @@ appName: lab-gke-frontend
 namespace: argocd # Để cùng namespace với ArgoCD cho tiện quản lý ban đầu
 
 image:
-  repository: devopsjourney1/mywebapp
-  tag: latest
+  repository: nginx
+  tag: :alpine
 
 ingress:
   enabled: false # Tắt đi nếu bạn chưa dùng ingress riêng cho app này

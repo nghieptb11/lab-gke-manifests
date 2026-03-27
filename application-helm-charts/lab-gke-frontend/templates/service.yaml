@@ -1,14 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: lab-gke-frontend
+  name: lab-gke-frontend-svc
   namespace: argocd
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}
 spec:
   type: {{ .Values.service.type }}
   selector:
-    app.kubernetes.io/name: lab-gke-frontend
-    app.kubernetes.io/instance: lab-gke-frontend
+    app: lab-gke-frontend
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: http # Phải khớp với name: http trong Deployment
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }} 

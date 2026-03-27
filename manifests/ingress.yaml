@@ -38,6 +38,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: lab-gke-frontend
+                name: lab-gke-frontend-svc
                 port:
                   number: 80
