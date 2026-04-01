@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: lab-gke-frontend
+  name: lab-gke-backend
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/nghieptb11/lab-gke-manifests.git
     targetRevision: main
-    path: application-helm-charts/lab-gke-frontend
+    path: application-helm-charts/lab-gke-backend
     helm:
       valueFiles:
         - values.yaml
