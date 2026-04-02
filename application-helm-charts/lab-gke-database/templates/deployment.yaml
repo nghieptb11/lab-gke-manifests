@@ -42,10 +42,13 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            - name: MYSQL_DATABASE
+              value:  {{ .Values.database.name | quote }}
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mysql-root-password
+                  name: {{ .Release.Name }}-db-secret
+                  key: mysql-password
           ports:
             - name: mysql
               containerPort: {{ .Values.service.port }}

@@ -1,15 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "lab-gke-database.fullname" . }}
+  name: {{ .Release.Name }}-mysql-svc
+  namespace: {{ .Values.namespace }}
   labels:
-    {{- include "lab-gke-database.labels" . | nindent 4 }}
+    app: mysql-db
 spec:
-  type: {{ .Values.service.type }}
+  clusterIP: None
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+      targetPort: {{ .Values.service.targetPort }}
       protocol: TCP
-      name: http
+      name: {{ .Values.service.portName }}
   selector:
-    {{- include "lab-gke-database.selectorLabels" . | nindent 4 }}
+    app: mysql-db
