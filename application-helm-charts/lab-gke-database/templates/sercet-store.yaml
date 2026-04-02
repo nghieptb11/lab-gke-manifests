@@ -11,4 +11,4 @@ spec:
           clusterLocation: {{ .Values.gcp.clusterLocation | quote }}
           clusterName: {{ .Values.gcp.clusterName | quote }}
           serviceAccountRef:
-            name: {{ .Values.serviceAccount.email }} # Sử dụng ServiceAccount vừa tạo bên trên
+            name: {{ .Values.serviceAccount.name }} # Sử dụng ServiceAccount vừa tạo bên trên
