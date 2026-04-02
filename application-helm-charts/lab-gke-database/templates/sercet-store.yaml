@@ -8,5 +8,7 @@ spec:
       projectID: {{ .Values.gcp.projectId }}
       auth:
         workloadIdentity:
+          clusterLocation: {{ .Values.gcp.clusterLocation | quote }}
+          clusterName: {{ .Values.gcp.clusterName | quote }}
           serviceAccountRef:
             name: {{ .Values.serviceAccount.email }} # Sử dụng ServiceAccount vừa tạo bên trên
