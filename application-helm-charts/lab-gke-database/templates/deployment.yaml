@@ -44,7 +44,7 @@ spec:
           env:
             - name: MYSQL_DATABASE
               value:  {{ .Values.database.name | quote }}
-            - name: MYSQL_ROOT_PASSWORD
+            - name:  MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Release.Name }}-db-secret

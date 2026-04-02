@@ -99,13 +99,15 @@ resources: {}
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
-  httpGet:
-    path: /
-    port: http
+  tcpSocket:
+    port: 3306
+    initialDelaySeconds: 30 # Đợi 30s cho MySQL khởi động xong lần đầu
+    periodSeconds: 10
 readinessProbe:
-  httpGet:
-    path: /
-    port: http
+  tcpSocket:
+    port: 3306
+  initialDelaySeconds: 5
+  periodSeconds: 10
 
 # This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
 autoscaling:
@@ -126,6 +128,8 @@ volumeMounts:
 - name: init-script
   mountPath: "/docker-entrypoint-initdb.d/init.sql"
   subPath: "init.sql"
+
+
 
 
 nodeSelector: {}
