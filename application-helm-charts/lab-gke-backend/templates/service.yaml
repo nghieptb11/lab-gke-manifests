@@ -1,18 +1,4 @@
 # Cấu hình Health Check cho GKE Load Balancer
-apiVersion: cloud.google.com/v1
-kind: BackendConfig
-metadata:
-  name: {{ .Release.Name }}-backend-config
-  labels:
-    app: backend-api
-spec:
-  healthCheck:
-    checkIntervalSec: 15
-    port: {{ .Values.service.port }}
-    type: HTTP
-    requestPath: {{ .Values.service.healthCheckPath }} # API Node.js của bạn phải trả về 200 OK ở path này
-
----
 apiVersion: v1
 kind: Service
 metadata:
@@ -25,6 +11,7 @@ metadata:
     # Bật tính năng NEG (Network Endpoint Group) định tuyến trực tiếp đến Pod
     cloud.google.com/neg: '{"ingress": true}'
 spec:
+  type: {{ .Values.service.type }}
   selector:
     app: backend-api
   ports:
