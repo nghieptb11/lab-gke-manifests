@@ -7,7 +7,7 @@ replicaCount: 1
 
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: us-central1-docker.pkg.dev/lab-gke-485602/lab-gke-backend
+  repository: us-central1-docker.pkg.dev/lab-gke-485602/lab-gke-485602-dev-registry/backend-api
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.

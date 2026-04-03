@@ -41,10 +41,6 @@ spec:
                 name: lab-gke-frontend-svc
                 port:
                   number: 80
-
-    - host: frontend-app-nghieptb-gke-lab.webapp01.hblab.dev
-      http:
-        paths:
           - path: /api
             pathType: Prefix
             backend:
