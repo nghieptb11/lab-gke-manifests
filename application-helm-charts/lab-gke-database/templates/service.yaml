@@ -6,7 +6,7 @@ metadata:
   labels:
     app: mysql-db
 spec:
-  clusterIP: None
+  type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.targetPort }}
