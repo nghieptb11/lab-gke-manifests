@@ -42,6 +42,8 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           env:
+          - name: GCS_BUCKET_NAME
+            value: "lab-gke-485602-dev-images-bucket"
           - name: DB_HOST
             value: {{ .Values.database.host | quote }}
           - name: DB_USER
