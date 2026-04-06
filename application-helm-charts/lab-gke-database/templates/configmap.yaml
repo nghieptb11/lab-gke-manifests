@@ -30,4 +30,4 @@ data:
     -- 3. Đảm bảo cột caption dùng đúng bảng mã
     ALTER TABLE photos MODIFY caption VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
     INSERT INTO photos (gcs_object_name, caption, date_taken) 
-    VALUES ('demo-anh-1.jpg', 'Ngày đầu tiên hẹn hò ❤️', '2025-07-06');
+    VALUES ('photos/demo-anh-1.jpg', 'Ngày đầu tiên hẹn hò ❤️', '2025-07-06');
