@@ -12,3 +12,14 @@ data:
         content VARCHAR(255) NOT NULL
     );
     INSERT INTO messages (content) VALUES ('Xin chào! Đây là dữ liệu được lấy từ MySQL Database qua Backend API.');
+
+    CREATE TABLE photos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    gcs_object_name VARCHAR(255) NOT NULL, -- Tên file trên GCS, vd: 'ky-niem-da-lat-1.jpg'
+    caption VARCHAR(500),                  -- Lời nhắn cho bức ảnh
+    date_taken DATE,                       -- Ngày chụp
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    INSERT INTO photos (gcs_object_name, caption, date_taken) 
+    VALUES ('demo-anh-1.jpg', 'Ngày đầu tiên hẹn hò ❤️', '2025-07-06');
