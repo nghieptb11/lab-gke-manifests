@@ -5,7 +5,8 @@ metadata:
   name: mysql-init-script
 data:
   init.sql: |
-    CREATE DATABASE IF NOT EXISTS {{ .Values.database.name }};
+    SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+    CREATE DATABASE IF NOT EXISTS {{ .Values.database.name }} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
     USE {{ .Values.database.name }};
     CREATE TABLE IF NOT EXISTS messages (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -19,7 +20,7 @@ data:
     caption VARCHAR(500),                  -- Lời nhắn cho bức ảnh
     date_taken DATE,                       -- Ngày chụp
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     -- 1. Chuyển đổi Database sang utf8mb4
     ALTER DATABASE appdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
